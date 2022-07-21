@@ -21,4 +21,6 @@ async def on_member_remove(member):
     channel=bot.get_channel(999708638660792321)
     await channel.send(f'{member} leave')
 
-bot.run("OTk5NzAwMzQ5MjM1NTA3MjYy.GTe9e-.yd1OB8bsM8ijP3SWgLFgBQ61lcO4GXAjFUzuig") #傳入bot 的token
+
+
+bot.run("") #傳入bot 的token
