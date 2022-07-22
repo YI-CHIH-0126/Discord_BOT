@@ -1,5 +1,10 @@
 import discord
 from discord.ext import commands
+import json
+
+with open("setting.json",mode="r",encoding="utf-8") as jfile: #開啟外部的json檔案
+    jdata=json.load(jfile)
+
 
 intents=discord.Intents.default()
 intents.members=True
@@ -12,15 +17,15 @@ async def on_ready(): #協成函式
 
 @bot.event
 async def on_member_join(member):
-    channel=bot.get_channel(999708638660792321)
-    await channel.send(f'{member} join') #在頻道傳送訊息
+    channel=bot.get_channel(int(jdata["Welcome_channel"]))
+    await channel.send(f'welcome {member} join') #在頻道傳送訊息
 
 
 @bot.event
 async def on_member_remove(member):
-    channel=bot.get_channel(999708638660792321)
+    channel=bot.get_channel(int(jdata["Welcome_channel"]))
     await channel.send(f'{member} leave')
 
 
 
-bot.run("") #傳入bot 的token
+bot.run(jdata["TOKEN"]) #傳入bot 的token
